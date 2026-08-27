@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: portfolio-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+      - key: GITHUB_USERNAME
+        value: PriyanshuPal24
+      - key: GITHUB_CACHE_TTL
+        value: "900"
+      # Set these in the Render dashboard (do not commit secrets):
+      #   ALLOWED_ORIGINS  -> your deployed frontend URL
+      #   CONTACT_TO_EMAIL -> where contact messages are sent
+      #   RESEND_API_KEY   -> Resend API key (optional but recommended)
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: CONTACT_TO_EMAIL
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false

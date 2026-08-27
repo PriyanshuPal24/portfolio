@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.db
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env & secrets
+.env
+.env.local
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+
+# Uncompressed source photo (the served copy lives in frontend/public)
+frontend/src/profile-original.png
