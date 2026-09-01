@@ -2,8 +2,7 @@ import { useState } from 'react'
 import Section from './Section.jsx'
 import SpotlightCard from './SpotlightCard.jsx'
 import profile from '../data/profile.js'
-
-const API_BASE = import.meta.env.VITE_API_BASE ?? '/api'
+import { API_BASE } from '../api.js'
 
 const EMPTY = { name: '', email: '', subject: '', message: '' }
 
