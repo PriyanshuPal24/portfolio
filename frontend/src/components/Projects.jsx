@@ -16,7 +16,14 @@ function sortRepos(repos) {
 
 async function loadRepos() {
   try {
-    const res = await fetch(`${API_BASE}/github/repos`)
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 3000)
+    let res
+    try {
+      res = await fetch(`${API_BASE}/github/repos`, { signal: controller.signal })
+    } finally {
+      clearTimeout(timeout)
+    }
     if (!res.ok) throw new Error('backend unavailable')
     return await res.json()
   } catch {
